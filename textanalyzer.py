@@ -27,10 +27,15 @@ class Interface:
 def check_text(text):
     counts = Counter(text.split())
 
+    # gets the words count
     words_quantity = len(text.split())
+    # characters count
     characters_quantity = len(text)
+    # characters count without space
     characters_quantity_nospace = len(text.replace(" ", ""))
+    # most used words
     most_used = counts.most_common(1)[0][0]
+    # calc the word size average
     average = characters_quantity_nospace / words_quantity
 
     return [words_quantity, characters_quantity, characters_quantity_nospace, most_used, average]
@@ -38,13 +43,20 @@ def check_text(text):
 def space():
     print("\n"*30)
 
+# instancing interface
 interface = Interface()
 space()
 interface.display_head()
 print()
+
+# get text
 text = str(input(" +- text: "))
 space()
-interface.display_text_results(check_text(text)[0], check_text(text)[1], check_text(text)[2], check_text(text)[3], check_text(text)[4])
+
+checked_text_result = check_text(text)
+
+# display the result, function returns a list with the parameters
+interface.display_text_results(checked_text_result[0], checked_text_result[1], checked_text_result[2], checked_text_result[3], checked_text_result[4])
 
     
 
